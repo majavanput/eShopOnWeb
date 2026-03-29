@@ -2,7 +2,11 @@ name: eShopOnWeb Build and Test
 
 #Triggers (uncomment line below to use it)
 #on: [push, workflow_dispatch]
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 permissions:
   id-token: write
