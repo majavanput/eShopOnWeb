@@ -9,7 +9,7 @@ env:
   RESOURCE-GROUP: AZ-400
   LOCATION: westeurope
   TEMPLATE-FILE: infra/webapp.bicep
-  # SUBSCRIPTION-ID: bf1b5129-7317-4dff-b781-a1b1f3c49520
+  SUBSCRIPTION-ID: bf1b5129-7317-4dff-b781-a1b1f3c49520
   WEBAPP-NAME: eshoponweb-webapp-mizuki
 
 jobs:
@@ -71,23 +71,22 @@ jobs:
           path: bicep-template
 
       #Login in your azure subscription using a service principal (credentials stored as GitHub Secret in repo)
-      # NOT NEEDED FOR FEDERATED CREDENTIALS
       - name: Azure Login
         uses: azure/login@v2
         with:
-          client-id: 91cb3a80-aaa1-42d0-ab94-7ff1215bdc7f
-          # subscription-id: bf1b5129-7317-4dff-b781-a1b1f3c49520
-          tenant-id: 0a34997f-a704-47b8-8c77-7fb303a57b7b
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           # creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       # Deploy Azure WebApp using Bicep file
       - name: deploy
         uses: azure/arm-deploy@v2
         with:
-          subscriptionId: ${{ env.SUBSCRIPTION-ID }}
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: ${{ env.RESOURCE-GROUP }}
           template: bicep-template/webapp.bicep
-          # parameters: "webAppName=${{ env.WEBAPP-NAME }} location=${{ env.LOCATION }}"
+          parameters: "webAppName=${{ env.WEBAPP-NAME }} location=${{ env.LOCATION }}"
           failOnStdErr: false
 
       # Publish website to Azure App Service (WebApp)
