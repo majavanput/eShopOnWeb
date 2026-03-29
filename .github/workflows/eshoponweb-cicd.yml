@@ -76,7 +76,7 @@ jobs:
         uses: azure/login@v2
         with:
           client-id: 91cb3a80-aaa1-42d0-ab94-7ff1215bdc7f
-          subscription-id: bf1b5129-7317-4dff-b781-a1b1f3c49520
+          # subscription-id: bf1b5129-7317-4dff-b781-a1b1f3c49520
           tenant-id: 0a34997f-a704-47b8-8c77-7fb303a57b7b
           # creds: ${{ secrets.AZURE_CREDENTIALS }}
 
