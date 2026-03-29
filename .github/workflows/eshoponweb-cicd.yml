@@ -9,7 +9,7 @@ env:
   RESOURCE-GROUP: AZ-400
   LOCATION: westeurope
   TEMPLATE-FILE: infra/webapp.bicep
-  SUBSCRIPTION-ID: bf1b5129-7317-4dff-b781-a1b1f3c49520
+  # SUBSCRIPTION-ID: bf1b5129-7317-4dff-b781-a1b1f3c49520
   WEBAPP-NAME: eshoponweb-webapp-mizuki
 
 jobs:
