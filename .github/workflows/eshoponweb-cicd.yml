@@ -4,9 +4,9 @@ name: eShopOnWeb Build and Test
 #on: [push, workflow_dispatch]
 on:
   push:
-    branches: [ main ]
+    branches: [ main, workflow_dispatch ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, workflow_dispatch ]
 
 permissions:
   id-token: write
